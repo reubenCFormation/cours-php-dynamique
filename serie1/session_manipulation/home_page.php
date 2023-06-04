@@ -3,7 +3,7 @@ session_start();
 if(isset($_GET["logout"]) && !empty($_GET["logout"])){
     var_dump($_GET["logout"]);
     echo '<br/>';
-    session_unset();
+    session_destroy();
 
     var_dump($_SESSION);
 }

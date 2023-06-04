@@ -12,7 +12,7 @@
 
 2) Faites en sorte de vous authentifier avec un utilisateur de votre base de données
     a) Tout d'abord afficher un message de bienvenue a l'ecran si notre utilisateur est bien authentifié. Si notre utilisateur n'est pas authentifié, afficher un message d'erreur a la place qui indiqeura que les identifiants saisis ne sont pas valide.
-    b) Dans un deuxieme temps, lors que notre utilisateur s'est authentifié, faites en sorte de rediriger vers une autre page qui va souhaiter le bienvenue a l'utilisateur
+    b) Dans un deuxieme temps, lors que notre utilisateur s'est authentifié, faites en sorte de rediriger vers une autre page que vous aurez creer! 
 
 */
     

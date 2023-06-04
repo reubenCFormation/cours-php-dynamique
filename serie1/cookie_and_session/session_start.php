@@ -2,7 +2,7 @@
    /*
     En php les sessions sont une maniere de de stocker des informations sur un serveur et ainsi nous allons pouvoir y avoir access a ces informations sur multiple pages de notre siteweb car nos informations seront stocké sur un serveur centralisé. Les sessions sont aussi beaucoup plus securisé que les cookies vu que les données d'une session sont stocké sur un serveur distant et non dans nos navigateurs. En php nous pouvons stocker des informations d'une session dans une superglobale (rappel $_POST,$_GET) que nous allons nommer $_SESSION. Ce tableau $_SESSION va pouvoir conserver toutes les informations sur notre session et nous allons pouvoir l'alimenter comme nous le souhaitons.
 
-    A noter: Il faut obligatoirement mettre un session_start() sur la PREMIERE ligne de notre fichier si nous souhaitons utiliser notre superglobale $_SESSION!
+    A noter: Il faut obligatoirement mettre un session_start() sur la PREMIERE ligne de notre fichier si nous souhaitons utiliser notre superglobale $_SESSION sinon la variable $_SESSION ne sera pas reconnue!!
    */
   session_start();
   require_once('../db/connect.php');
@@ -23,7 +23,7 @@ if(!empty($_POST)){
             if($verifyIfAuth){
                 // ici grace aux session_start je vais pouvoir alimenter ma superglobale $_SESSION 
                 $_SESSION["user"]=$user;
-               header('location:../session_manipulation/session_info.php');
+               header('location:session_info.php');
 
                
             }
