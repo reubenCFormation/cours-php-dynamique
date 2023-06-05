@@ -4,10 +4,12 @@ var_dump($_SESSION);
 // Si j'ai cliqué sur mon bouton pour me deconnecter, je vais tomber dans cette condition!
 if(isset($_GET["logout"]) && $_GET["logout"]==true){
     /*
-    comme nous pouvons le constater, ici nous allons appeler session_destroy mais notre affichage ne change pas tout de suite. Les sessions ont un comportement un peu particulier. Ici meme si nous avons bien envoyé un query param dans l'url pour nous deconnecter, la page va encore se souvenir de nos données de sessions, meme si elles sont maintenant detruite car elle garde les données de la requette precedante en memoire . Il faut donc encore une fois faire une requette (et cette fois si avec des données de session vierge) Pour mettre a jour notre affichage. Nous pouvons soit cliqué sur le bouton pour se deconnecter deux fois ou nous pouvons faire une redirection avec notre fonction header apres avoir fait appel a la fonction session_destroy.
+    comme nous pouvons le constater, ici nous allons appeler session_destroy mais notre affichage ne change pas tout de suite. Les sessions ont un comportement un peu particulier. Ici meme si nous avons bien envoyé un query param dans l'url pour nous deconnecter, la page va encore se souvenir de nos données de sessions,meme si j'ai desactivé la session, mon tableau $_SESSION est toujours gardé en memoire. session_destroy ne detruit pas automatiquement le tableau $_SESSION il met juste fin a la session. Il faut rafraichir la page une deuxieme fois pour detruire notre tableau $_SESSION et je fais ca avec une redirection!
 
     Si c'est pas trés clair pour vous, c'est pas trés grave, prenez juste l'habitude de faire une redirection apres avoir fait appel a la fonction session_destroy!
     */
+
+    
     session_destroy();
     //var_dump($_SESSION);
 

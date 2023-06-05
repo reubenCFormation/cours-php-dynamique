@@ -18,3 +18,10 @@ require_once('../controller/userController.php');
         -->
     </body>
 </html>
+
+<script>
+    // ce code est neccesaire pour empecher notre formulaire d'etre soumis a chaque fois que la page a etait rafraichi
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>

@@ -16,6 +16,12 @@
 
     <body style="background:#fafdfe;">
         <div class="container"> 
+            <?php
+                if(isset($_GET["welcome"])):?>
+                    <h4 class="text-center text-success"> <?php echo $_GET["welcome"] ?> </h4>
+                <?php endif ?>
+            
+           
            <!--
             PARTIE 1
                  Dans un premier temps, trouvez un moyen d'afficher tous nos produits (il  va falloir recuperer nos produits dans la base de données et les afficher ici). Affichez le titre, la description  et la photo du produit. Utilisez la classe card de bootstrap pour vous faciliter le travail. 

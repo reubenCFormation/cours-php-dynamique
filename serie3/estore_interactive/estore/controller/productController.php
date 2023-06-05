@@ -3,7 +3,14 @@
  require_once('../database/queries.php');
  
  $getUrl=$_SERVER["REQUEST_URI"];
+ /*
+  Ici je vais recuperer la chaine de caractere contenu apres ma derniere occurence de / dans mon url. 
+
+ */
  $findLastOccurence=strrchr($getUrl,"/");
+ /*
+  Si add_product.php est trouvé dans la chaine de caractere qui a etait renvoyé par $findLastOccurence, ca veux dire que je suis actuellement sur la page add_product.php, je vais donc declencher la fonction getAddProduct
+ */
  if(strpos($findLastOccurence,"add_product.php")){
     
    if(getAddProduct()){
@@ -27,14 +34,7 @@
      
  }
 
- if(strpos($findLastOccurence,"product_details.php")){
-    $product=findProduct();
-    if(empty($product)){
-      $errorMsg="Une erreur s'est produite";
-    }
-  
-   
-}
+
 
 
 
