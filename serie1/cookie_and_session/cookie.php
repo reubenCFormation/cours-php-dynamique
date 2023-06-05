@@ -43,7 +43,7 @@ if(!empty($_POST)){
 
                var_dump($_COOKIE);
 
-               // pour effacer un cookie
+               // pour effacer une clé d'un cookie
                unset($_COOKIE["userId"]);
 
                

@@ -1,5 +1,6 @@
 <?php
 session_start();
+var_dump($_SESSION);
 // Si j'ai cliqué sur mon bouton pour me deconnecter, je vais tomber dans cette condition!
 if(isset($_GET["logout"]) && $_GET["logout"]==true){
     /*
@@ -8,9 +9,10 @@ if(isset($_GET["logout"]) && $_GET["logout"]==true){
     Si c'est pas trés clair pour vous, c'est pas trés grave, prenez juste l'habitude de faire une redirection apres avoir fait appel a la fonction session_destroy!
     */
     session_destroy();
+    //var_dump($_SESSION);
 
     //ici je redirige!
-    header('location:./session_start.php');
+    //header('location:./session_start.php');
 }
 
 ?>
