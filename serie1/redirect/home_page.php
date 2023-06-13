@@ -12,7 +12,7 @@ var_dump($_SESSION);
     </head>
 
     <body>
-        <h2 class="text-center text-success"> Bienvenue a ma page d'accueil!! </h2>
+        <h2 class="text-center text-success"> Bienvenue a ma page d'accueil!!  </h2>
         
     </body>
 </html>

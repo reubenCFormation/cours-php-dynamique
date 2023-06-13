@@ -9,7 +9,10 @@
  if(!empty($_GET)){
     echo "get is set <br/>";
     var_dump($_GET);
+   
  }
+
+
 
 
 
@@ -43,12 +46,12 @@
         </div>
         <div class="form-group">
          <label for="exampleInputEmail1">Email address</label>
-         <input type="email" class="form-control" name="email">
+         <input type="email" class="form-control" name="eamil" >
   
         </div>
         <div class="form-group">
          <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" name="password">
+        <input type="password" class="form-control" name="password" >
         </div>
         <div class="d-flex col-4 justify-content-center">
             <!--

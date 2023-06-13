@@ -19,9 +19,9 @@
  */
 
  $users=$statement->fetchAll(PDO::FETCH_ASSOC);
- echo "<h2> Plusiers utilisateurs avec fetchAll </h2>";
+
  var_dump($users);
- echo "<br/>";
+ 
 
  
 

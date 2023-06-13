@@ -9,6 +9,7 @@
  if(!empty($_POST)){
     echo "post is set <br/>";
     var_dump($_POST);
+    $_POST["email"];
  }
 
 

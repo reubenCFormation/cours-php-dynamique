@@ -7,7 +7,7 @@ require_once('../db/connect.php');
 
 if(!empty($_POST)){
     // si mes deux champs ont bien etait saisi
-    if(!empty($_POST["email"]&& !empty($_POST["password"]))){
+    if(!empty($_POST["email"])&& !empty($_POST["password"])){
         $email=$_POST["email"];
         $passwordStr=$_POST["password"];
 

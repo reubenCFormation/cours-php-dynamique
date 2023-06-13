@@ -12,6 +12,7 @@
 
  $dbConnector=new PDO("mysql:host=$host;dbname=$dbname",$username,$password);
  $dbConnector->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ var_dump($dbConnector);
 
  // verifions que nous sommes bien connectés a notre base de données!
 /*

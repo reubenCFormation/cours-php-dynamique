@@ -14,7 +14,7 @@ if(isset($_GET["logout"]) && $_GET["logout"]==true){
     //var_dump($_SESSION);
 
     //ici je redirige!
-    //header('location:./session_start.php');
+    header('location:./session_start.php');
 }
 
 ?>
@@ -40,7 +40,7 @@ if(isset($_GET["logout"]) && $_GET["logout"]==true){
         <!--
             Ici lors que je clique sur le lien pour me deconnecter, je vais envoyer un query param dans l'url que je vais appeler logout et je vais lui donner la valeur true.
         -->
-        <a href="?logout=<?php echo true ?>" class="btn btn-primary col-2 offset-2"> Deconnection</a>
+        <a href="?logout=<?php echo true?>" class="btn btn-primary col-2 offset-2"> Deconnection</a>
         <?php endif ?>
 
         <br/>

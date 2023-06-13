@@ -7,6 +7,7 @@ require_once("../db/connect.php");
 $password="password";
 // Ici avec la fonction password_hash je peux crypté le mot de passe de l'utilisateur. Cette fonction prends deux parametres, le premier est le mot de passe en clair et le deuxieme et l'algorithme de cryptage que nous allons utiliser
 $hashedPassword=password_hash($password,PASSWORD_BCRYPT);
+
 // Ici nous pouvons voir a quoi ressemble un mot de passe crypté
 var_dump($hashedPassword);
 echo '<br>';
@@ -15,7 +16,7 @@ echo '<br>';
 $sql="UPDATE users set PASSWORD=? WHERE email=?";
 $statement=$dbConnector->prepare($sql);
 // ici on est censé voir que la base de données s'est mise a jour avec le mot de passe crypté pour notre utilisateur
-$statement->execute([$hashedPassword,"reubchou@gmail.com"]);
+$statement->execute([$hashedPassword,"goat@gmail.com"]);
 
 
 

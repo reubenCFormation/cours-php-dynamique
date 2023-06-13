@@ -6,7 +6,8 @@
 EXO 1
  1) creer un fichier form.php et ecrivez un formulaire html dedans. Dans votre formulaire html rajoutez un champ pour saisir un nom,prenom,email et mot de passe ainsi que une description. Faites en sorte de pouvoir recuperer les valeurs que vous aurez saisi avec dans le formulaire. Une fois avec get et une fois avec post
 EXO 2
- 1)Creer une base de donnée que vous allez nommé serie1_exos
+
+ 1) Creer une base de donnée que vous allez nommé serie1_exos
  2) Creer une table nommé  users avec comme champs un id qui sera la clé primaire,un prenom (varchar avec 255 characteres),un nom(varchar avec 255 characteres),un email(varchar avec 255 characteres qui sera unique), un mot de passe (varchar avec 255 characteres) et enfin une description qui sera du texte
  3) Creer un fichier connect.php et connectez vous a votre base de donnée avec PDO 
  4) A partir de votre fichier form.php faites en sorte de pouvoir inserer les valeurs que vous avez saisi dans la base de données. Il faut utiliser une requette preparé!

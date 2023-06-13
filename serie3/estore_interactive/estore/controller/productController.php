@@ -35,9 +35,6 @@
  }
 
 
-
-
-
  function uploadImage(){
     if (isset($_FILES["image"])) {
         var_dump($_FILES);

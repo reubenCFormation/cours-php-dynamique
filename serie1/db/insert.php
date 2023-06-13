@@ -12,7 +12,7 @@ if(!empty($_POST)){
     $email=$_POST["email"];
     $password=$_POST["password"];
     // ici nous allons voir comment inserer en base de données avec les valeurs provenant d'un formulaire!
-try{
+
     // notez ici que nous avons des doubles quotes ("") autour de notre requette sql. Nos variables sont aussi des chaines de caracteres avec des doubles quotes. Que se passe t'il si nous precisons des doubles quotes autour de nos valuers d'insertion
     // nous voyons deja que ca ne marchera pas!
     /*
@@ -25,13 +25,20 @@ try{
     */
 
     // enfin, nous allons devoir mettre en simple chaine de caracteres autour des noms de nos variables pour avoir des valeurs dynamiques qui reporesenteront les valuers que on aurai saisi dans notre formulaire. Le simple guillemet est un delimeteur sql qui va preciser que il s'agit d'une chaine de caracteres. Meme si nos variables php sont deja des chaines de caracteres, notre sql ne les reconnait pas comme etant des chaines de caractere et nous allons devoir mettre des simples guillemets pour le faire comprendre a notre sql!
+try{
+    
 
     // ici je verifie que mes données saisi ne sont pas vides
     if(!empty($firstname)&& !empty($lastname) && !empty($email) && !empty($password)){
     // si c'est le cas j'effectue ma requette
     $sql="INSERT INTO users (firstname,lastname,email,password) VALUES('$firstname','$lastname','$email','$password')";
     // ici j'effectue une requette qui ne vas pas me retourner une valeur, elle va juste inserer des données dans ma bdd. Je vais donc utiliser la fonction exec.
-    $dbConnector->exec($sql);
+    $result=$dbConnector->exec($sql);
+     // neanmoins, nous pouvons bien verifier que nos données sont inserés et si c'est le cas nous serons renvoyés true (qui s'exprime en int (1))
+    var_dump($result);
+   
+
+    
     }
     // si j'ai des données vide je ne vais pas faire d'insertion
     else{
@@ -46,6 +53,7 @@ try{
 
 catch(PDOException $e){
    echo $e->getMessage();
+   
 }
 }
 
@@ -101,3 +109,10 @@ catch(PDOException $e){
 
     </body>
 </html>
+
+<script>
+    // ce code est neccesaire pour empecher notre formulaire d'etre soumis a chaque fois que la page a etait rafraichi
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>

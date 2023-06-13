@@ -21,6 +21,7 @@ if(!empty($_POST)){
         $email=$_POST["email"];
         
         $passwordStr=$_POST["password"];
+
         $sql="SELECT * FROM users WHERE email=?";
         $statement=$dbConnector->prepare($sql);
         $statement->execute([$email]);
@@ -41,10 +42,10 @@ if(!empty($_POST)){
 
                 ]);
 
-               var_dump($_COOKIE);
+               var_dump($_COOKIE["userId"]);
 
                // pour effacer une clé d'un cookie
-               unset($_COOKIE["userId"]);
+               //unset($_COOKIE["userId"]);
 
                
             }

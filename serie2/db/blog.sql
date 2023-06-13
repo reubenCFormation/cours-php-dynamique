@@ -15,7 +15,9 @@ CREATE table if not exists articles(
     is_active TINYINT(1) DEFAULT 1,
     photo TEXT,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) 
+        REFERENCES users (id)
+        ON DELETE CASCADE
 
 );
 
@@ -24,7 +26,9 @@ CREATE TABLE if not exists comments(
     comment TEXT NOT NULL,
     is_active TINYINT(1) DEFAULT 1,
     article_id INT,
-    FOREIGN KEY (article_id) REFERENCES articles (id)
+    FOREIGN KEY (article_id) 
+        REFERENCES articles (id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE if not exists categories (
@@ -36,6 +40,11 @@ CREATE TABLE if not exists categories_articles(
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     article_id INT,
     category_id INT,
-    FOREIGN KEY (article_id) REFERENCES articles (id),
-    FOREIGN KEY (category_id) REFERENCES categories (id)
+    FOREIGN KEY (article_id) 
+        REFERENCES articles (id)
+        ON DELETE CASCADE
+
+    FOREIGN KEY (category_id) 
+        REFERENCES categories (id)
+        ON DELETE CASCADE
 );

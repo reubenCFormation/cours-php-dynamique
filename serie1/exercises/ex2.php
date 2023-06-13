@@ -11,8 +11,10 @@
     e) Creer de nouveau un fichier form.php et cette fois ci, nous allons inserer des utilisateurs en base de données avec des mot de passe qui seront crypté et non plus en clair. Gardez bien les champs de votre formulaire (firstname,lastname,email,password et description) dans votre fichier form.php
 
 2) Faites en sorte de vous authentifier avec un utilisateur de votre base de données
-    a) Tout d'abord afficher un message de bienvenue a l'ecran si notre utilisateur est bien authentifié. Si notre utilisateur n'est pas authentifié, afficher un message d'erreur a la place qui indiqeura que les identifiants saisis ne sont pas valide.
-    b) Dans un deuxieme temps, lors que notre utilisateur s'est authentifié, faites en sorte de rediriger vers une autre page que vous aurez creer! 
+    a) Tout d'abord, creer un fichier auth.php pour que l'utilisateur puisse s'authentifier
+    b) Trouvez un moyen de savoir si notre utilisateur a rentrer les bons identifiants
+    c) Afficher un message de bienvenue a l'ecran si notre utilisateur est bien authentifié. Si notre utilisateur n'est pas authentifié, afficher un message d'erreur a la place qui indiqeura que les identifiants saisis ne sont pas valide.
+    d) Dans un deuxieme temps, lors que notre utilisateur s'est authentifié, faites en sorte de rediriger vers une autre page que vous aurez creer! 
 
 */
     

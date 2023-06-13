@@ -11,7 +11,11 @@ if(!empty($_POST)){
             $email=$_POST["email"];
             $password=$_POST["password"];
 
+           
+
         // Comme je viens de montrer, cette requette peux etre trés facilement manipulable a l'aide d'un formulaire. Meme si je moi je comprends pas a 100% comment ca fonctionne, on voit bien que il suffit de facilement manipuler les valeurs saisi dans nos formulaires pour que celle ci puisse facilement etre interpreté par notre sql et ainsi il suffit de connaitre un email ou un username et nous pouvons se connecter sans un mot de passe!. C'est loin d'etre ideale. C'est pour cela que il nous faut de requette preparé!
+
+        
         /*
         $sql="SELECT * FROM users WHERE email='$email' AND password='$password'";
         $pdoStatement=$dbConnector->query($sql);
@@ -20,15 +24,37 @@ if(!empty($_POST)){
         */
         
         
+        
+        
+        
+        
        
         // c'est pour cela que nous allons utiliser les requettes preparés! Voici un example. Ici nous remplacons nos variables par un ?
+
+
+        
         $sql="SELECT * FROM users WHERE email=? AND password=?";
-        // la methode prepare va nous permettre de "preparer" notre requette mais aucune donnée sera testé par raison de nos points d'interrogations. Nos points d'interrogations sont des "joker" et sont juste pour indiquer que nous allons vouloir chercher quel que chose dans notre base de données mais nous ne savons pas encore. Ainsi, nous n'allons pas pouvoir directement modifier notre chaine de caracteres sql.
+        
+        
+
+
+        // la methode prepare va nous permettre de "preparer" notre requette mais aucune donnée sera reelement connu par raison de nos points d'interrogations. Nos points d'interrogations sont des "joker" et sont juste pour indiquer que nous allons vouloir chercher quel que chose dans notre base de données mais nous ne savons pas encore. Ainsi, nous n'allons pas pouvoir directement modifier notre chaine de caracteres sql.
+
+        
         $statement=$dbConnector->prepare($sql);
+        
+        
+
         // Ici, nous allons preciser a quoi va reelement correspondre nos valeurs. A noter que un utilisateur malvoyant ne pourra plus modifier notre requette sql, avec prepare elle a deja etait "traité" et maintenant nous allons preciser directement a quoi va correspondre nous deux points d'interrogations, dans ce cas la, ca sera nos deux variables $email et $password
+
+        // noter ici que j'utilise fetch. Contrairement a fetchAll, si nous avons que un seul resultat, la methode fetch va nous renvoyer directement un tableau associatif et ne mettra pas ce tableau associatif dans una autre tableau.
+
+        
         $statement->execute([$email,$password]);
         $results=$statement->fetch(PDO::FETCH_ASSOC);
         var_dump($results);
+        
+        
         
         
         
