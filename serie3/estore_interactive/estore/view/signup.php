@@ -1,6 +1,28 @@
 <?php
 require_once('./header.php');
-require_once('../controller/userController.php');
+require_once('../database/queries.php');
+
+if(!empty($_POST)){
+    $firstname=$_POST["firstname"];
+    $lastname=$_POST["lastname"];
+    $email=$_POST["email"];
+    $passwordStr=$_POST["password"];
+
+    if(!empty($firstname) && !empty($lastname) && !empty($email) && !empty($passwordStr)){
+        $hash=password_hash($passwordStr,PASSWORD_BCRYPT);
+        $getInsert=addUserQuery($firstname,$lastname,$email,$hash);
+
+        if($getInsert){
+            $successMsg="utilisateur bien insere!";
+        }
+    }
+
+    else{
+        $errorMsg="Erreur de saisi des champs!";
+    }
+
+ }
+
 
 ?>
 
@@ -16,6 +38,42 @@ require_once('../controller/userController.php');
 
             //BONUS: faites en sorte d'afficher un message de bienvenue a l'utilisateur apres que il est validé son inscription. 
         -->
+    <div class="container"> 
+        <?php if(isset($errorMsg) && !empty($errorMsg)):?>
+                <h4 class="text-danger text-center"> <?php echo $errorMsg ?> </h4>
+        <?php endif ?>
+
+        <?php if(isset($successMsg) && !empty($successMsg)):?>
+                <h4 class="text-success text-center"> <?php echo $successMsg ?> </h4>
+        <?php endif ?>
+
+
+        <h2 class="text-center"> Inscription </h2>
+        <form method="post">
+            
+            <div class="form-group">
+                <label for="exampleInputPassword1">firstname</label>
+                <input type="text" class="form-control" name="firstname">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">lastname</label>
+                <input type="text" class="form-control" name="lastname">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">email</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <br/>
+            <div class="form-group w-100 d-flex justify-content-center">
+                <button type="submit" class="w-25 btn btn-primary">Submit</button>
+            </div>
+        
+        </form>
+</div>
     </body>
 </html>
 

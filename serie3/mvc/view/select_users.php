@@ -1,5 +1,6 @@
 <?php
 require_once("../controller/userController.php");
+require_once("./header.php");
 
 ?>
 

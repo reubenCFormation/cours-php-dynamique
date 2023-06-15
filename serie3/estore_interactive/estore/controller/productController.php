@@ -67,23 +67,7 @@
 
  function getAddProduct(){
     
-    if(!empty($_POST)){
-        if(!empty($_POST["title"])&& !empty($_POST["description"]) && !empty($_POST["quantity"])){
-            echo 'FUNCTION CALLED!';
-            $title=$_POST["title"];
-            $description=$_POST["description"];
-            $quantity=$_POST["quantity"];
-            $price=intval($_POST["price"]);
-            $getImageUrl=uploadImage();
-            $userId=$_SESSION["user"]["id"];
-        
-            $isProductAdded=addProductQuery($title,$description,$getImageUrl,$price,$quantity,$userId);
-
-            if($isProductAdded){
-                return true;
-            }
-        }
-    }
+  
   
 
  }

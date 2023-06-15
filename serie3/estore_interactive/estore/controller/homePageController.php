@@ -14,20 +14,9 @@ if(strpos($findLastOccurence,"home_page.php")){
 
 function treatQueryParams(){
     // ici si j'ai un query prarm logout et que il est defini a true, je vais decider de vider la session et d'y mettre fin en appelant la fonction session_destroy
-   if(isset($_GET["logout"])&& $_GET["logout"]==true){
-        
-        // Apres avoir appelé la fonction session_destroy je vais rediriger vers la page d'accueil ce qui a pour but de rafraichir la page une deuxieme fois et donc de vider mon tableau $_SESSION"
-        session_destroy();
-        
-        header('location:./home_page.php');
-   }
 
 
-   
 
-  
-
-   
 
  
 }

@@ -1,6 +1,7 @@
 <?php
 // je charge le contenu de mon fichier userController.php
 require_once("../controller/userController.php");
+require_once("./header.php");
 
 
 ?>

@@ -1,7 +1,65 @@
 <?php
 require_once("./header.php");
-require_once('../controller/productController.php');
+require_once('../database/queries.php');
+function uploadImage(){
+    if (isset($_FILES["image"])) {
+        //var_dump($_FILES);
+        $file = $_FILES["image"];
+      
+        
+        $fileName = $file["name"];
+        $fileTmpPath = $file["tmp_name"];
+        
+      
+        $targetDir = "uploads/";
+        $targetFilePath = $targetDir . $fileName;
+      
+        
+        if (move_uploaded_file($fileTmpPath, $targetFilePath)) {
 
+         
+          echo "File uploaded successfully.";
+        }
+        $getEndPosUrl=strpos($_SERVER["REQUEST_URI"],"/add_product.php");
+       
+       
+        $getSubStrUrl=substr($_SERVER["REQUEST_URI"],0,$getEndPosUrl);
+        
+
+       
+        
+        $imageUrl ='http://'. $_SERVER["HTTP_HOST"] . $getSubStrUrl . '/' . $targetFilePath;
+        
+        return $imageUrl;
+        
+    }
+
+
+
+
+ }
+
+
+ if(!empty($_POST)){
+    if(!empty($_POST["price"])&& !empty($_POST["title"])&& !empty($_POST["description"]) && !empty($_POST["quantity"])){
+       
+        $title=$_POST["title"];
+        $description=$_POST["description"];
+        $quantity=$_POST["quantity"];
+        $price=intval($_POST["price"]);
+        $getImageUrl=uploadImage();
+        $userId=$_SESSION["user"]["id"];
+    
+        $getIsProductAdded=addProductQuery($title,$description,$price,$quantity,$userId,$getImageUrl);
+        var_dump($getIsProductAdded);
+        if($getIsProductAdded){
+            $successMsg="Produit rajouté avec succes!";
+        }
+
+        
+    }
+}
+  
 
 ?>
 
@@ -54,8 +112,11 @@ require_once('../controller/productController.php');
 </html>
 
 <script>
+    
     // ce code est neccesaire pour empecher notre formulaire d'etre soumis a chaque fois que la page a etait rafraichi
+    
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
+    
 </script>

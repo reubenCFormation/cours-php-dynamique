@@ -27,12 +27,12 @@ function userLoginQuery($email,$password){
     }
 }
 
-function addProductQuery($title,$description,$photoUrl,$price,$quantity,$user){
+function addProductQuery($title,$description,$price,$quantity,$user,$photoUrl=null){
     try{
         $dbConnector=connect();
-        $sql="INSERT into products (title,description,photo,price,quantity,user_id) VALUES(?,?,?,?,?,?)";
+        $sql="INSERT into products (title,description,price,quantity,user_id,photo) VALUES(?,?,?,?,?,?)";
         $statement=$dbConnector->prepare($sql);
-        $statement->execute([$title,$description,$photoUrl,$price,$quantity,$user]);
+        $statement->execute([$title,$description,$price,$quantity,$user,$photoUrl]);
         var_dump($statement);
         return true;
     }
@@ -41,6 +41,20 @@ function addProductQuery($title,$description,$photoUrl,$price,$quantity,$user){
         echo $e->getMessage();
     }
    
+}
+
+function addUserQuery($firstname,$lastname,$email,$hash){
+    try{
+        $dbConnector=connect();
+        $sql="INSERT into users(firstname,lastname,email,password,role) VALUES (?,?,?,?,?)";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute([$firstname,$lastname,$email,$hash,'user']);
+        return true;
+    }
+    
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
 }
 
 // ECRIVEZ ICI UNE FONCTION POUR INSERER NOS UTILSATEURS

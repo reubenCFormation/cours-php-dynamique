@@ -1,7 +1,14 @@
 <?php
  require_once('./header.php');
- require_once('../controller/homePageController.php');
- require_once('../controller/productController.php');
+ require_once('../database/queries.php');
+
+ if(isset($_GET["logout"])&& $_GET["logout"]==true){
+        
+    // Apres avoir appelé la fonction session_destroy je vais rediriger vers la page d'accueil ce qui a pour but de rafraichir la page une deuxieme fois et donc de vider mon tableau $_SESSION"
+    session_destroy();
+    
+    header('location:./home_page.php');
+}
  
 
 ?>
@@ -34,6 +41,8 @@
 
                     BONUS: En cliquant sur le lien pour signaler un produit comme etant offensif, nous allons faire une requette sql et mettre a jour ce produit pour le signaler comme etant offensif dans la base de données. En ooutre, si un produit est signalé comme offensif,il n'y aura plus de lien pour consuler les details du produit. 
             -->
+
+     
         </div>
     </body>
 </html>

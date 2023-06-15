@@ -1,6 +1,6 @@
 <?php
  require_once('./header.php');
- require_once('../controller/productController.php');
+ 
 ?>
 
 <!DOCTYPE html>
