@@ -2,7 +2,7 @@
  function connect(){
     $host="localhost";
     // ma base de données
-    $dbname="estore_interactive";
+    $dbname="estore_solution";
     // mon utilisateur (par defaut root)
     $username="root";
     // mon mot de passe (j'en precise pas). Plus tard, nous allons voir comment securiser notre mot de passe avec les variables d'environment
