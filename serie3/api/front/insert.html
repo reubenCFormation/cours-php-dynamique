@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class=" d-flex justify-content-center bg-info">
+                <a  href="./members.html" class="btn btn-primary"> Voir les Membres </a>
+            </div>
+            <!--
+                Remarquer que ici je n'ai pas besoin de mettre la proprieté name sur mes champs input ni de preciser la methode post sur mon formulaire. Ici, nous allons utiliser du javascript pour gerer et recuperer les valeurs de nos données et javascript va construire la requette et envoyer les données dans son propre objet. Lors de la soumission du formulaire, les données saisis ne seront pas directement envoyés au serveur, elles seront d'abord traiter par notre javascript avant d'etre envoyés au serveur php.Les données seront aussi envoyés sous un format JSON.
+
+            -->
+            <form id="form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Firstname</label>
+                    <input type="text" class="form-control firstname">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Lastname</label>
+                    <input type="text" class="form-control lastname">
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control email">
+                   
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control password">
+                </div>
+                <br/>
+                <div class="form-group">
+                    
+                    <textarea class="form-control description border border-dark" rows="10" cols="20"> </textarea>
+                </div>
+                <br/>
+                  <div class="d-flex justify-content-center">
+                   
+                    <button type="submit" class="btn btn-primary col-4">Submit</button>
+                  </div>
+                  
+            </form>
+           
+        </div>
+    </body>
+    <script src="./insert.js"> </script>
+</html> 
