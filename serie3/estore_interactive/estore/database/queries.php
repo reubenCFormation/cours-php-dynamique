@@ -57,6 +57,38 @@ function addUserQuery($firstname,$lastname,$email,$hash){
     }
 }
 
+function getProductsQuery(){
+    try{
+        $dbConnector=connect();
+        $sql="SELECT * FROM products";
+        $statement=$dbConnector->query($sql);
+        $products=$statement->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
+        
+
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function flagProductQuery($productId){
+    try{
+        $dbConnector=connect();
+        $sql="UPDATE products set is_flagged=? WHERE id=?";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute(['1',$productId]);
+        return true;
+        
+        
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 // ECRIVEZ ICI UNE FONCTION POUR INSERER NOS UTILSATEURS
 
 // ECRIVEZ ICI UNE FONCTION POUR RECUPERER TOUS NOS PRODUITS 

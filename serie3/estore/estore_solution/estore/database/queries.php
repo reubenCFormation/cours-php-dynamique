@@ -102,6 +102,42 @@ function flagProductQuery($id){
     }
 }
 
+function addProductComment($comment,$productId,$userId){
+    try{
+        $dbConnector=connect();
+        $sql="INSERT INTO comments (comment,product_id,user_id) VALUES (?,?,?)";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute([$comment,$productId,$userId]);
+        return true;
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function getProductComments($productId){
+    try{
+        $dbConnector=connect();
+        $sql="SELECT comments.comment,
+        products.title AS product_title, 
+        users.firstname AS user_firstname,
+        users.lastname AS user_lastname, 
+        users.email AS user_email FROM comments 
+        JOIN products ON comments.product_id=products.id 
+        JOIN users ON comments.user_id=users.id  
+        WHERE product_id=?";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute([$productId]);
+        $comments=$statement->fetchAll(PDO::FETCH_ASSOC);
+        return $comments;
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 // ECRIVEZ ICI UNE FONCTION POUR INSERER NOS UTILSATEURS
 
 // ECRIVEZ ICI UNE FONCTION POUR RECUPERER TOUS NOS PRODUITS 

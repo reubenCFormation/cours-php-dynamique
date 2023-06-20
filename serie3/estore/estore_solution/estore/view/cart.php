@@ -32,7 +32,7 @@ if(isset($_SESSION["quantity-warning"])){
                 
                     <div class="col-3 align-self-center text-info p-1 border rounded"> Titre: <?php echo $cartItem["product_title"] ?></div>
                     <div class="col-3 p-1 border rounded"> <img style="height:150px; width:100%;object-fit:cover;" class="img img-fluid" src="<?php echo $cartItem["product_photo"]?>"/> </div>
-                    <div class="col-3 p-1 border rounded text-info"> <?php echo $cartItem["product_description"] ?></div>
+                    <div style="overflow-wrap:break-word;" class="col-3 p-1 border rounded text-info"> <?php echo $cartItem["product_description"] ?></div>
                     <div class="col-3 align-self-center p-1 border rounded">
                         <div class="text-info"> Prix: <?php echo $cartItem["product_price"]?> </div>
                         <div class="text-info"> Quantité: <?php echo $cartItem["quantity_in_cart"] ?> </div>

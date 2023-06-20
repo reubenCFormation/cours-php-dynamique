@@ -24,9 +24,9 @@ require_once('../database/queries.php');
             <br/>
             <div class="d-flex justify-content-around bg-light p-2">
                 <div class="col-6">
-                  <div class=" border shadow d-flex flex-column align-items-center justify-content-center border rounded">
+                  <div class="border shadow d-flex flex-column align-items-center justify-content-center border rounded">
                     <h4 class="text-primary"> Titre: <?php echo $product["title"] ?> </h4>
-                    <p class="text-info text-center">  <?php echo $product["description"] ?> </p>
+                    <p class="col-6 text-info" style="overflow-wrap:break-word;" class="text-info text-center ">  <?php echo $product["description"] ?> </p>
                     <div class="text-info"> Quantité en stocke <?php echo $product["quantity"] ?> </div>
                     <div class="text-info"> Prix <?php echo $product["price"] ?> </div>
                  </div>
@@ -52,8 +52,19 @@ require_once('../database/queries.php');
            <br/>
            
             <div class="d-flex justify-content-center">
-                     <a href="./cart.php?productToAdd=<?php echo $product["id"] ?>" class="btn btn-primary col-4"> Ajouter Au Panier </a>
-                </div>
+                <a href="./cart.php?productToAdd=<?php echo $product["id"] ?>" class="btn btn-primary col-4"> Ajouter Au Panier </a>
+            </div>
+            <br/>
+
+            <div class="d-flex justify-content-center">
+                <a href="./comment_product.php?product_id=<?php echo $product["id"] ?>& product_title=<?php echo $product["title"] ?>" class="btn btn-primary col-4"> Ecrire Un commentaire </a>
+            </div>
+            <br/>
+
+            <div class="d-flex justify-content-center">
+                <a href="./view_comments.php?product_id=<?php echo $product["id"] ?> &product_title=<?php echo $product["title"] ?>" class="btn btn-primary col-4"> Consulter les commentaires </a>
+            </div>
+            <br/>
         </div>
     </body>
 </html>

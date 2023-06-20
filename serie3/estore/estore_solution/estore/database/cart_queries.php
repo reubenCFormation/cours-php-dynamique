@@ -162,6 +162,7 @@ function getAllUserCartItemsQuery($cartId){
         $sql="SELECT 
         count(cart_products.product_id) AS quantity_in_cart, 
         cart.id AS cart_id,
+        products.id AS product_id,
         products.quantity AS product_quantity, 
         products.title AS product_title,
         products.price AS product_price,
@@ -187,12 +188,13 @@ function getAllUserCartItemsQuery($cartId){
 
 }
 
-function updateProductQuatntityQuery($newQuantity,$cartId){
+function updateProductQuatntityQuery($newQuantity,$productId){
     $dbConnector=connect();
     try{
-        $sql="UPDATE cart SET quantity=? WHERE id=?";
+        $sql="UPDATE products SET quantity=? WHERE id=?";
         $statement=$dbConnector->prepare($sql);
-        $statement->execute([$newQuantity,$cartId]);
+        $statement->execute([$newQuantity,$productId]);
+        var_dump($statement);
         return true;
 
     }

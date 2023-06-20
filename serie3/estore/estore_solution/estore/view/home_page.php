@@ -59,18 +59,23 @@ $products=getAllProductsQuery();
 
                                 <?php if(isset($_SESSION["user"])):?>
                                 <div class="d-flex flex-column align-items-center">
+                               
                                     <?php if($product["quantity"]>0 && !$product["is_flagged"]): ?>
+                                    
                                         <a href="./product_details.php?product_id=<?php echo $product["id"]?>" class="btn btn-primary col-9 m-1"> Voir les details </a>
-                                    <?php elseif($product["quantity"]<0): ?>
+                                    <?php elseif($product["quantity"]<0 && !$product["is_flagged"]): ?>
                                         <div class="text-center text-warning"> Hors Stocke </div>
 
-                                    <?php else :?>
-                                        <h4 class="text-center text-warning "> Ce Produit a etait signalé comme offensif! </h4>
-
+                                     <?php elseif($product["is_flagged"]):?>
+                                       
+                                        <div class="text-warning text-center"> Ce produit a etait signalé comme etant offensif </div>
                                     <?php endif ?>
 
                                     <?php if($_SESSION["user"]["role"]=="admin"):?>
+                                        <?php if(!$product["is_flagged"]):?>
                                         <a href="?flagProductId=<?php echo $product["id"]?>" class="btn btn-warning col-9 m-1"> Signaler comme offensif </a>
+                                            
+                                        <?php endif ?>
                                     <?php endif ?>
                                     </div>
                                 <?php endif ?>

@@ -67,14 +67,13 @@ require('../database/cart_queries.php');
         }
         // sinon ca veux dire que il me reste suffisament de produits en stocke pour pouvoir les valider et je vais donc mettre a jour la quantité des produits dans mon panier
         else{
-            updateProductQuatntityQuery($newQuantity,$item["cart_id"]);
+           
+            updateProductQuatntityQuery($newQuantity,$item["product_id"]);
         }
     }
 
     return true;
-
-    
-   
+  
  
  }
  // si je suis pret a valider mon panier
@@ -95,17 +94,10 @@ if($getCartReadyForValidate){
  
 
 
- 
-
-/*
-
-
-
-
  echo'<pre>';
  var_dump($cartItems);
  echo '</pre>'
- */
+
 
 
 

@@ -15,6 +15,15 @@
               <!--
                 Cette page va afficher les details d'un produit que nous aurons selectionné. Pensez a utilisez les query params. Ici, affichez le titre,la description,la quantité,le prix ef les informations sur la personne qui a posté le produit (prenom et email,pensez a une maniere d'ecrire votre requette sql pour pouvoir recuperer les informations de l'utilisateur qui a posté le produit!) Aussi, trouvez un moyen de recuperer le bon id du produit dans votre requette sql Affocainsi que la quantité en stocke  et le prix. A gauche, affichez une photo du produit qui a etait selectionné
             -->
+
+
+            <!--
+                Sur cette page, rajoutez un lien pour pouvoir laisser un commentaire sur le produit en particulier. Ce lien doit pointer vers la page pour rajouter un commentaire
+            -->
+
+            <!--
+                Sur cette page, rajoutez un lien pour pouvoir consulter tous les commentaires liés a ce produit
+            -->
           
 
            
