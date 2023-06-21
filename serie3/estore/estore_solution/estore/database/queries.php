@@ -102,7 +102,7 @@ function flagProductQuery($id){
     }
 }
 
-function addProductComment($comment,$productId,$userId){
+function addProductCommentQuery($comment,$productId,$userId){
     try{
         $dbConnector=connect();
         $sql="INSERT INTO comments (comment,product_id,user_id) VALUES (?,?,?)";
@@ -116,21 +116,94 @@ function addProductComment($comment,$productId,$userId){
     }
 }
 
-function getProductComments($productId){
+function getProductCommentsQuery($productId){
     try{
         $dbConnector=connect();
-        $sql="SELECT comments.comment,
+        $sql="SELECT comments.*,
         products.title AS product_title, 
         users.firstname AS user_firstname,
         users.lastname AS user_lastname, 
-        users.email AS user_email FROM comments 
+        users.email AS user_email 
+        FROM comments 
         JOIN products ON comments.product_id=products.id 
         JOIN users ON comments.user_id=users.id  
         WHERE product_id=?";
         $statement=$dbConnector->prepare($sql);
         $statement->execute([$productId]);
         $comments=$statement->fetchAll(PDO::FETCH_ASSOC);
+       
         return $comments;
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function flagCommentQuery($commentId){
+    try{
+        $dbConnector=connect();
+        $sql="UPDATE comments SET is_flagged=? WHERE id=?";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute(['1',$commentId]);
+        return true;
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+
+}
+
+function checkIfUserHasRatedProductQuery($productId,$userId){
+    try{
+        $dbConnector=connect();
+        $sql="SELECT * FROM ratings 
+        JOIN products ON ratings.product_id=products.id 
+        JOIN users ON ratings.user_id=users.id 
+        WHERE ratings.product_id=? AND ratings.user_id=?";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute([$productId,$userId]);
+        $result=$statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if(!$result){
+            return false;
+        }
+        
+        else{
+            return true;
+        }
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function rateProductQuery($rating,$productId,$userId){
+    try{
+        $dbConnector=connect();
+        $sql="INSERT INTO ratings (rating,product_id,user_id) VALUES (?,?,?)";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute([$rating,$productId,$userId]);
+        return true;
+    }
+
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function getAverageProductRatingQuery($productId){
+    try{
+        $dbConnector=connect();
+        $sql="SELECT AVG(ratings.rating) AS average_rating FROM ratings 
+        JOIN products ON ratings.product_id=products.id 
+        WHERE products.id=?
+        GROUP BY products.id";
+        $statement=$dbConnector->prepare($sql);
+        $statement->execute([$productId]);
+        $ratings=$statement->fetch(PDO::FETCH_ASSOC);
+        return $ratings;
     }
 
     catch(PDOException $e){

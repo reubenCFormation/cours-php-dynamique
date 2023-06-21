@@ -57,8 +57,10 @@ require('../database/cart_queries.php');
     
    
     foreach($items as $item){
+        $cartReadyForValidate=true;
         // ici je vais recuperer la nouvelle quantité restant du produit en stocke apres avoir valider mon panier
         $newQuantity=$item["product_quantity"]-$item["quantity_in_cart"];
+        $newQuantites=[];
         // si je veux valider plus d'achats produits qui se trouve actuellement en stocke
         if($newQuantity<0){
             $cartReadyForValidate=false;
@@ -67,8 +69,13 @@ require('../database/cart_queries.php');
         }
         // sinon ca veux dire que il me reste suffisament de produits en stocke pour pouvoir les valider et je vais donc mettre a jour la quantité des produits dans mon panier
         else{
-           
-            updateProductQuatntityQuery($newQuantity,$item["product_id"]);
+            $newQuantites[]=$newQuantity;
+        }
+    }
+
+    if($cartReadyForValidate){
+        foreach($newQuantites as $index=>$quantity){
+            updateProductQuatntityQuery($quantity,$items[$index]["product_id"]);
         }
     }
 

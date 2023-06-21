@@ -4,7 +4,7 @@ require_once('../database/queries.php');
 if(isset($_GET["product_id"])&& !empty($_GET["product_id"])){
     if(!empty($_POST) && !empty($_POST["comment"])){
         var_dump($_POST);
-        $getProductAdded=addProductComment($_POST["comment"],$_GET["product_id"],$_SESSION["user"]["id"]);
+        $getProductAdded=addProductCommentQuery($_POST["comment"],$_GET["product_id"],$_SESSION["user"]["id"]);
 
         if($getProductAdded){
             $commentAddedMsg="cçmmentaire bien ajouté!";
@@ -34,16 +34,7 @@ if(isset($_GET["product_id"])&& !empty($_GET["product_id"])){
                 <h4 class="text-center"> Mon Commenataire</h4>
                 <textarea class="form-control" rows="10" cols="40" name="comment"></textarea>
                 <br/>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Example multiple select</label>
-                     <select class="form-control" name="score">
-                             <option>1</option>
-                             <option>2</option>
-                             <option>3</option>
-                             <option>4</option>
-                             <option>5</option>
-                    </select>
-                </div>
+                
                 <div class="d-flex justify-content-center"> 
                     <button type="submit" class="btn btn-primary col-4"> Valider </button>
                 </div>

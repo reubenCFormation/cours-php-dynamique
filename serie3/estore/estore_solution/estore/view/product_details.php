@@ -1,8 +1,20 @@
 <?php
 require_once('../database/queries.php');
- require_once('./header.php');
+require_once('./header.php');
 
  $product=findProductQuery($_GET["product_id"]);
+
+ $hasUserRatedProduct=checkIfUserHasRatedProductQuery($_GET["product_id"],$_SESSION["user"]["id"]);
+
+ if(!empty($_POST)){
+    if(!empty($_POST["rating"])){
+       $isProductRated=rateProductQuery($_POST["rating"],$_GET["product_id"],$_SESSION["user"]["id"]);
+
+       if($isProductRated){
+         $productAddedMsg="Produit bien note!";
+       }
+    }
+ }
 
 
  
@@ -17,10 +29,36 @@ require_once('../database/queries.php');
 
     <body style="background:#fafdfe;">
         <div class="container mt-3">
+           
               <!--
                 Cette page va afficher les details d'un produit que nous aurons selectionné. Pensez a utilisez les query params. Ici, affichez le titre,la description,la quantité,le prix ef les informations sur la personne qui a posté le produit (prenom et email,pensez a une maniere d'ecrire votre requette sql pour pouvoir recuperer les informations de l'utilisateur qui a posté le produit!) Aussi, trouvez un moyen de recuperer le bon id du produit dans votre requette sql Affocainsi que la quantité en stocke  et le prix. A gauche, affichez une photo du produit qui a etait selectionné
             -->
             <h4 class="text-center text-info"> Details du produit </h4>
+             <?php if($product["user_id"]!=$_SESSION["user"]["id"] && !$hasUserRatedProduct): ?>
+                <?php if(isset($productAddedMsg) && !empty($productAddedMsg)):?>
+                    <h4 class="text-center text-success"> <?php echo $productAddedMsg ?> </h4>
+                <?php endif ?>
+                <h4 class="text-center text-info"> Attribuer une note a ce produit! </h4>
+                <div class="d-flex justify-content-center">
+                    <form method="post">
+                        <div class="form-group">
+                        <label class="text-center text-info">Attribuer votre note</label>
+                            <select class="form-control" name="rating">
+                                 <option value=1> 1 </option>
+                                 <option value=2> 2</option>
+                                 <option value=3> 3</option>
+                                 <option value=4> 4</option>
+                                 <option value=5> 5</option>
+                            </select>
+                         </div>
+                     
+                    <div class="d-flex mt-2">
+                        <button type="submit" class="btn btn-primary col">Notez!</button>
+                     </div>
+                    
+                </form>
+             </div>
+             <?php endif ?>
             <br/>
             <div class="d-flex justify-content-around bg-light p-2">
                 <div class="col-6">
@@ -57,12 +95,12 @@ require_once('../database/queries.php');
             <br/>
 
             <div class="d-flex justify-content-center">
-                <a href="./comment_product.php?product_id=<?php echo $product["id"] ?>& product_title=<?php echo $product["title"] ?>" class="btn btn-primary col-4"> Ecrire Un commentaire </a>
+                <a href="./add_comment.php?product_id=<?php echo $product["id"] ?>& product_title=<?php echo $product["title"] ?>" class="btn btn-primary col-4"> Ecrire Un commentaire </a>
             </div>
             <br/>
 
             <div class="d-flex justify-content-center">
-                <a href="./view_comments.php?product_id=<?php echo $product["id"] ?> &product_title=<?php echo $product["title"] ?>" class="btn btn-primary col-4"> Consulter les commentaires </a>
+                <a href="./comments.php?product_id=<?php echo $product["id"] ?> &product_title=<?php echo $product["title"] ?>" class="btn btn-primary col-4"> Consulter les commentaires </a>
             </div>
             <br/>
         </div>

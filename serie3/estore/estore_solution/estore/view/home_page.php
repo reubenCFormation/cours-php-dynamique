@@ -20,9 +20,6 @@ if(isset($_GET["flagProductId"]) && !empty($_GET["flagProductId"])){
 $products=getAllProductsQuery();
 
 
-
- 
-
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +48,18 @@ $products=getAllProductsQuery();
            <?php if(count($products)>0):?>
                 <div class="d-flex flex-wrap justify-content-center">
                     <?php foreach($products as $product):?>
+                        <?php 
+                            $getProductRatings=getAverageProductRatingQuery($product["id"]);
+
+                            echo '<pre>';
+                            var_dump(number_format($getProductRatings["average_rating"],2));
+                            echo '</pre>';
+                            
+
+                        ?>
+                        <?php if($getProductRatings):?>
+                            <div class="text-info"> Note Moyenne: <?php echo number_format($getProductRatings["average_rating"],2) ?></div>
+                        <?php endif ?>
                         <div class="card col-3 m-2">
                          <img style="height:200px; object-fit:cover;" class="card-img-top" src=<?php echo $product["photo"]?> alt="Card image cap">
                             <div class="card-body">

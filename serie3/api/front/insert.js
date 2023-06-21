@@ -19,12 +19,13 @@ function insertUserDataToServer(event){
 
         // ici je vais ecrire mes données dans le serveur. Je vais appel a la fonction fetch, et contrairement a lors que j'utilise la methode GET, ici je suis en POST et je vais donc devoir preciser des informations additionelles. En premier lieu, la methode utilisé (fetch est en GET par defaut) Ainsi que le corps de la requette et les en-tetes pour definir le type de contenu que je vais envoyer
         fetch('http://localhost:8080/introPHP/cours-php-dynamique/serie3/api/back/insert.php',{
+            // ici je vais preciser que nous allons utiliser la methode POST. Par defaut, fetch utilisera la methode GET, donc si nous voulons utiliser quel que chose de different, nous devons le preciser
             method:"POST",
             // ici je vais transformer mon objet en chaine de caracteres pour que il puisse etre lu par mon serveur php. Je vais ensuite appliquer un json_decode en PHP pour le transformer en tableau associatif
             body: JSON.stringify(dataToSend),
             //ici je defini le type de contenu de la requette. Ca sera une chaine de caracteres ecrit comme du json (si j'ai bien compris)
             headers:{"Content-type":"application/json"}
-
+            // si tous se passe bien, je vais recevoir la reponse du serveur qui dans ce cas va me renvoyer un message de felicitation
         }).then((response)=>{
             response.json().then((message)=>{
                 console.log(message)

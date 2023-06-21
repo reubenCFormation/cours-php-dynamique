@@ -7,7 +7,7 @@ require('./connect.php');
 //ici je vais preciser que "tout le monde" a le droit a acceder a cette api
 header("Access-Control-Allow-Origin: *");
 
-// ici je vais preciser que cette api va nous retourner du json
+// ici je vais preciser au client que nous allons retouer des données sous format json
 header("Content-Type:application/json");
 
 // ici je vais definir les methodes (modes d'access) acceptable pour acceder a cette api
