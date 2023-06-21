@@ -1,7 +1,7 @@
 /*
  On a souvent entendu le mot A.P.I mais est ce que on sait reelement ce que c'est? Moi je sais, mais que a moitié peut etre mais je vais essayer d'expliquer. 
 
- A.P.I porte l'acronyme Application Programming Interface. Grossomodo, une A.P.I est utilisé pour faire deux machines communiquer entre eux. Dans le web, nous utilisons les API rest. En API Rest, le client (le front end) va faire une demande au serveur (dans ce cas,le serveur se sont nos fichiers PHP) et le serveur va repondre au client soit avec soit  du html ou plus souvent avec du JSON. Donc le client adresse une demande au serveur et le serveur traite cette demande et lui fournit une reponse. 
+ A.P.I porte l'acronyme Application Programming Interface. Grossomodo, une A.P.I est utilisé pour faire deux machines communiquer entre eux. Dans le web, nous utilisons les API rest. En API Rest, le client (le front end) va faire une demande au serveur (dans ce cas,le serveur se sont nos fichiers PHP) et le serveur va repondre au client soit avec soit  du html ou plus souvent avec du JSON. Donc le client adresse une demande au serveur et le serveur traite cette demande et lui fournit une reponse. Notez bien que client et le serveur sont deux machines differentes.
 
  Il y a deux methodes principales que les API utilisent. 
 

@@ -1,8 +1,11 @@
 <?php
 require('./connect.php');
+
+
+
 // ici nous allons creer un programme qui va nous retourner une liste de nos utilisateurs sous un format json. Ce script pourra ensuite etre "consommer" par un client front end.
 
-// les headers (en-tetes) contiennent les informations additionelles par rapport a une requette http. Grossomodo, elles vont contenir des informations supplementaires par rapport a la requette qui seront important a prendre en compte. Ces inforamtions pourront etre le type de reponse attendu, qui a le droit de voir la requette http etc.
+// les headers (en-tetes) contiennent les informations additionelles par rapport a une communication http. Grossomodo, elles vont contenir des informations supplementaires par rapport a la requette ou reponse qui seront important a prendre en compte. Ces inforamtions pourront etre le type de reponse attendu, qui a le droit de voir la reponse http etc. Etant donné que notre serveur est en train d'etre interogé par un client dans ce cas, les en tetes specifiés concerneront la response que le serveur va enboyer au client.
 
 //ici je vais preciser que "tout le monde" a le droit a acceder a cette api
 header("Access-Control-Allow-Origin: *");

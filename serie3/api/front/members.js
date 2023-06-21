@@ -2,10 +2,13 @@
 
 fetch("http://localhost:8080/introPHP/cours-php-dynamique/serie3/api/back/members.php").then((response)=>{
 
-   
-    // dans la fonction fetch, la reponse qui nous est retourné ne contient pas directement les données auxquelles nous souhaitons acceder.Neanmoins elle contient des fonctions pour pouvoir acceder aux données. L'une de ces fonctions est la fonction json qui va nous retourner les données sous format json et nous allons pouvoir ensuite acceder aux données comme nous le souhaitons
+    console.log("GET RESPONSE");
+    console.log(response);
+    console.log(typeof response);
+    // dans la fonction fetch, la reponse qui nous est retourné ne contient pas directement les données auxquelles nous souhaitons acceder.Neanmoins elle contient des fonctions pour pouvoir acceder aux données. L'une de ces fonctions est la fonction json qui va nous retourner les données sous format json et nous allons pouvoir ensuite acceder aux données comme nous le souhaitons. N'oubliez pas de mettre un .then apres l'appel a response.json pour acceder au données sous format json!
     response.json().then((data)=>{
         // ici je vais faire appel a la fonction showMemebers en lui precisant le data en argument pour afficher tous nos membres
+        console.log("GET JSON DATA");
         console.log(data);
         showMembers(data);
     }).catch((error)=>{
