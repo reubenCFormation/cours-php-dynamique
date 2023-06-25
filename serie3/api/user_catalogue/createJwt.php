@@ -75,7 +75,7 @@ function createJwtDump($user) {
 
 }
 
-//createJwtDump(["id"=>100,"firstname"=>"Bidon"]);
+createJwtDump(["id"=>100,"firstname"=>"Bidon"]);
 
 
 function createJwt($user){

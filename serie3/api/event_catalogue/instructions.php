@@ -29,7 +29,7 @@
     1)Avoir la capacité de s'inscrire et de se connecter
 
     2) Pouvoir recuperer tous les evenments (on doit etre authentifié pour le faire). Nous allons que recuperer les evenments qui seront dans une date future
-    3) Pouvoir recuperer les informations d'un evenment. Nous allons devoir aussi recuperer le prenom et le nom de chaque participant de l'evenment (nous devons etre authentifié pour le faire)
+    3) Pouvoir recuperer les informations d'un evenment. Nous allons devoir aussi recuperer le prenom et le nom de chaque participant de l'evenment (le nom de chaque personne qui a reservé un billet) (nous devons etre authentifié pour le faire)
     4 )Pouvoir s'incrire a un evenemnt (nous devons etre authentifié pour le faire)
     5) Pouvoir creer un evenment (nous devons etre authentifié pour le faire)
 
