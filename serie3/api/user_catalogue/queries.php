@@ -64,12 +64,12 @@ function findUserQuery($userId){
     }
 }
 
-function insertUserQuery($firstname,$lastname,$email,$password,$description,$expDate=null){
+function insertUserQuery($firstname,$lastname,$email,$password,$description){
     try{
         $dbConnector=connect();
-        $sql="INSERT INTO users (firstname,lastname,email,password,description,expiration_date) VALUES (?,?,?,?,?,?)";
+        $sql="INSERT INTO users (firstname,lastname,email,password,description) VALUES (?,?,?,?,?)";
         $statement=$dbConnector->prepare($sql);
-        $statement->execute([$firstname,$lastname,$email,$password,$description,$expDate]);
+        $statement->execute([$firstname,$lastname,$email,$password,$description]);
         return true;
     }
 

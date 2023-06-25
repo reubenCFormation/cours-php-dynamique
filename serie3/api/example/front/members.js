@@ -1,7 +1,7 @@
 // ici je vais interoger l'url ci dessous. J'utilise la methode fetch natif a javascript. La methode fetch prends l'url en argument et va retourner le contenu de cette url. Le contenu renvoyé par l'url se trouve dans le .then
 
 // remarquer aussi, que je peux passer en argument dans la methode fetch, un objet avec une clé que j'apelle headers. Cette clé aura comme valeur un autre objet avec une clé Authorization suivi pas "Bearer {mon_jeton}. On verra juste apres comment creer des jetons mais l'idee est d'envoyer a notre backend des informations pour leur montrer que on est autorisé a acceder aux informations de l'url a la quelle on souhaite acceder"
-fetch("http://localhost:8080/introPHP/cours-php-dynamique/serie3/api/back/members.php",{headers:{"Authorization":"Bearer my_token"}}).then((response)=>{
+fetch("http://localhost:8080/introPHP/cours-php-dynamique/serie3/api/example/back/members.php",{headers:{"Authorization":"Bearer my_token"}}).then((response)=>{
 
     console.log("GET RESPONSE");
     console.log(response);

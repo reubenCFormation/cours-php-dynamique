@@ -16,13 +16,11 @@ $getData=json_decode(file_get_contents("php://input"),true);
 
 if(!empty($getData)){
     $hash=password_hash($getData["password"],PASSWORD_BCRYPT);
-    if(!$getData["date"]){
-        $getInsert=insertUserQuery($getData["firstname"],$getData["lastname"],$getData["email"],$hash,$getData["description"]);
-    }
+   
+    $getInsert=insertUserQuery($getData["firstname"],$getData["lastname"],$getData["email"],$hash,$getData["description"]);
 
-    else{
-        $getInsert=insertUserQuery($getData["firstname"],$getData["lastname"],$getData["email"],$hash,$getData["description"],$getData["date"]);
-    }
+
+   
     
 
     if($getInsert){

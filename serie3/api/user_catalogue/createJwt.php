@@ -54,7 +54,7 @@ function createJwtDump($user) {
     echo $_ENV["SECRET"];
      // Grace a l'appel au Dotenv::createImmutable, je peux acceder aux informations dans mon fichier .env avec la variable $_ENV. Ainsi, je peux acceder a la clé "SECRET" de cette variable
 
-     // ainsi je vais crypter les informations contenu dans mon $payload, ce payload sera crypté  avec une clé secrete qui pourra nous donner quel que chose de totalement inidentifiable!
+     // ainsi je vais crypter les informations contenu dans mon $payload, ce payload sera crypté et nous devons preciser une clé secrete pour crypter ainsi que pour decrypter. 
 
     $token = JWT::encode($payload, $_ENV["SECRET"], 'HS256');
     echo "GET TOKEN";
@@ -75,7 +75,7 @@ function createJwtDump($user) {
 
 }
 
-//createJwtDump(["id"=>100,"firstname"=>"Jeremy"]);
+//createJwtDump(["id"=>100,"firstname"=>"Bidon"]);
 
 
 function createJwt($user){
