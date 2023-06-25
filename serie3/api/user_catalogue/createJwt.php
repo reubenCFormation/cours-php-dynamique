@@ -5,7 +5,7 @@ require_once('../vendor/autoload.php');
 use Dotenv\Dotenv;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-
+/*
 function createToken(){
     $dotenv=Dotenv::createImmutable(__DIR__);
     $dotenv->load();
@@ -37,9 +37,10 @@ function createToken(){
    
    //$decode=(json_decode(base64_decode(str_replace('_', '/', str_replace('-','+',explode('.', $jwt)[1])))));
 }
-
+*/
 
 function createJwtDump($user) {
+    // Ici je vais acceder au contenu de mon fichier .env. Pour pouvoir le faire, je dois faire qq traitements!
     $dotenv = Dotenv::createImmutable(__DIR__);
     $dotenv->load();
     $payload = [
@@ -51,6 +52,10 @@ function createJwtDump($user) {
     echo "GET SECRET";
     echo "<br/>";
     echo $_ENV["SECRET"];
+     // Grace a l'appel au Dotenv::createImmutable, je peux acceder aux informations dans mon fichier .env avec la variable $_ENV. Ainsi, je peux acceder a la clé "SECRET" de cette variable
+
+     // ainsi je vais crypter les informations contenu dans mon $payload, ce payload sera crypté  avec une clé secrete qui pourra nous donner quel que chose de totalement inidentifiable!
+
     $token = JWT::encode($payload, $_ENV["SECRET"], 'HS256');
     echo "GET TOKEN";
     echo "<br/>";
@@ -59,6 +64,7 @@ function createJwtDump($user) {
 
     echo "GET DECODE";
     echo "<br/>";
+    // ici je vais pouvoir decoder mon jwt pour verifier que les informations sont bien coherentes
     $decode = JWT::decode($token, new Key($_ENV["SECRET"],"HS256"),"HS256");
     var_dump($decode);
     echo "<br/>";
@@ -73,7 +79,7 @@ function createJwtDump($user) {
 
 
 function createJwt($user){
-    // Ici je vais acceder au contenu de mon fichier .env. Pour pouvoir le faire, je dois faire qq traitements!
+    
     $dotenv = Dotenv::createImmutable(__DIR__);
 
     $dotenv->load();
@@ -84,7 +90,9 @@ function createJwt($user){
         "roles" => ["user"],
         "exp" => time() +86400
     ];
-    // Grace aux configurations plus haut, je peux
+   
+
+   
     $token = JWT::encode($payload, $_ENV["SECRET"], 'HS256');
 
    return $token;
