@@ -11,6 +11,7 @@ function insertUserDataToServer(event){
     const email=document.querySelector(".email");
     const description=document.querySelector(".description");
     const password=document.querySelector(".password");
+   
     // ici je verifie que nous avons bien rempli tous nos champs. Nous accedons a la proprieté value
     if(firstname.value && lastname.value && email.value && description.value && password.value){
         // ici je vais construire un  object contenant les données que j'ai envoyés pour ensuite transmettre ces données au backend. Cette objet conteindra les valuers que j'ai saisi dans le formulaire
@@ -24,11 +25,12 @@ function insertUserDataToServer(event){
             // ici je vais transformer mon objet en chaine de caracteres pour que il puisse etre lu par mon serveur php. Je vais ensuite appliquer un json_decode en PHP pour le transformer en tableau associatif
             body: JSON.stringify(dataToSend),
             //ici je defini le type de contenu de la requette. Ca sera une chaine de caracteres ecrit comme du json (si j'ai bien compris)
-            headers:{"Content-type":"application/json"}
+            headers:{"Content-type":"application/json","Authorization":"Bearer helloworldthisismytoken"}
+            
             // si tous se passe bien, je vais recevoir la reponse du serveur qui dans ce cas va me renvoyer un message de felicitation
         }).then((response)=>{
             response.json().then((message)=>{
-                console.log(message)
+                console.log(message);
             }).catch((error)=>{
                 console.log("get error");
                 console.log(error);

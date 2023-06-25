@@ -23,13 +23,14 @@ $getData=json_decode(file_get_contents("php://input"),true);
 // si mon serveur a recu des données du javascript
 if(!empty($getData)){
     try{
-        var_dump($getData);
+        
         $sql="INSERT INTO users (firstname,lastname,email,description,password) VALUES(?,?,?,?,?)";
         $statement=$dbConnector->prepare($sql);
         $hash=password_hash($getData["password"],PASSWORD_BCRYPT);
         $statement->execute([$getData["firstname"],$getData["lastname"],$getData["email"],$getData["description"],$hash]);
+        $getData["password"]=$hash;
     
-        echo json_encode(["message"=>"Utilisateur bien insereés en Base De données!"]);
+        echo json_encode(["data"=>"Utilisateur bien insereés en Base De données!"]);
     
     }
 
